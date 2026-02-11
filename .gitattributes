@@ -5,11 +5,15 @@
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.7z filter=lfs diff=lfs merge=lfs -text
-*.exe filter=lfs diff=lfs merge=lfs -text
 
-# Go binaries and archives
+# Go binaries and archives - DO NOT push to git repositories
 go1.23.5.linux-amd64.tar.gz filter=lfs diff=lfs merge=lfs -text
 
 # Database files
 *.db filter=lfs diff=lfs merge=lfs -text
 *.sqlite filter=lfs diff=lfs merge=lfs -text
+
+# But keep important config files
+!config.yaml
+!config.example.yaml
+!.env.example
