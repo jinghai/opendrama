@@ -1,0 +1,14 @@
+[credential]
+	helper = cache
+[user]
+	name = OpenDrama Team
+	email = opendrama@example.com
+[core]
+	autocrlf = false
+	safecrlf = false
+
+[remote "origin"]
+	url = https://github.com/jinghai/opendrama.git
+[push]
+	default = simple
+	followTags = true
