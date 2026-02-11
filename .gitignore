@@ -1,58 +1,38 @@
-# Binaries for programs and any compiled output
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-*.ds*
+# Large files - use Git LFS
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.7z filter=lfs diff=lfs merge=lfs -text
 
-# Compiled binary files
-main
-dist/
-build/
+# Go binaries and archives
+go1.23.5.linux-amd64.tar.gz filter=lfs diff=lfs merge=lfs -text
 
-# Go vendor directory
-vendor/
-
-# Node modules
-node_modules/
-
-# Logs
-*.log
-*.log.*
+# Database files
+*.db filter=lfs diff=lfs merge=lfs -text
+*.sqlite filter=lfs diff=lfs merge=lfs -text
 
 # Runtime data
 data/
-*.db
-*.sqlite
+*.cache/
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
+# Logs
+*.log*
 
 # Sensitive data
 *.pem
 *.key
 *.token
 github_token.txt
-
-# Large files - use Git LFS
-*.tar.gz
-*.zip
-*.7z
+huobao.log
 
 # But keep important config files
 !config.yaml
 !config.example.yaml
-!.env.example
+
+# Development files
+web/node_modules/
+web/dist/
+web/.nuxt/
+
+# Temporary files
+*.tmp
+*.temp
