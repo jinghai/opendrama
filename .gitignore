@@ -1,0 +1,58 @@
+# Binaries for programs and any compiled output
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.ds*
+
+# Compiled binary files
+main
+dist/
+build/
+
+# Go vendor directory
+vendor/
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+*.log.*
+
+# Runtime data
+data/
+*.db
+*.sqlite
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Sensitive data
+*.pem
+*.key
+*.token
+github_token.txt
+
+# Large files - use Git LFS
+*.tar.gz
+*.zip
+*.7z
+
+# But keep important config files
+!config.yaml
+!config.example.yaml
+!.env.example
