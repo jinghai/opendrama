@@ -1,12 +1,10 @@
 package routes
 
 import (
-	"github.com/drama-generator/backend/api/handlers"
 	handlers2 "github.com/drama-generator/backend/api/handlers"
 	middlewares2 "github.com/drama-generator/backend/api/middlewares"
 	services2 "github.com/drama-generator/backend/application/services"
 	storage2 "github.com/drama-generator/backend/infrastructure/storage"
-	"github.com/drama-generator/backend/pkg/ai/newapi"
 	"github.com/drama-generator/backend/pkg/config"
 	"github.com/drama-generator/backend/pkg/logger"
 	"github.com/gin-gonic/gin"
@@ -58,10 +56,6 @@ func SetupRouter(cfg *config.Config, db *gorm.DB, log *logger.Logger, localStora
 	settingsHandler := handlers2.NewSettingsHandler(cfg, log)
 	propHandler := handlers2.NewPropHandler(db, cfg, log, aiService, imageGenService)
 
-	// NewAPI统一接口
-	newAPIClient := newapi.NewClient("https://api.newapi.com", "")
-	newAPIHandler := handlers2.NewNewAPIHandler(newAPIClient)
-
 	api := r.Group("/api/v1")
 	{
 		api.Use(middlewares2.RateLimitMiddleware())
@@ -91,15 +85,6 @@ func SetupRouter(cfg *config.Config, db *gorm.DB, log *logger.Logger, localStora
 			aiConfigs.GET("/:id", aiConfigHandler.GetConfig)
 			aiConfigs.PUT("/:id", aiConfigHandler.UpdateConfig)
 			aiConfigs.DELETE("/:id", aiConfigHandler.DeleteConfig)
-		}
-
-		// NewAPI统一接口路由
-		newapiRoutes := api.Group("/newapi")
-		{
-			newapiRoutes.POST("/text", newAPIHandler.GenerateText)
-			newapiRoutes.POST("/image", newAPIHandler.GenerateImage)
-			newapiRoutes.GET("/stats", newAPIHandler.GetStats)
-			newapiRoutes.PUT("/config", newAPIHandler.UpdateConfig)
 		}
 
 		generation := api.Group("/generation")

@@ -1,4 +1,4 @@
-# 🎬 OpenDrama (开源短剧) - AI短剧创作平台
+# 🎬 Huobao Drama - AI 短剧生成平台
 
 <div align="center">
 
