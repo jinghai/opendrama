@@ -1,10 +1,6 @@
 # OpenDrama (开源短剧)
 
 <p align="center">
-  <img src="drama.png" alt="OpenDrama Logo" width="200"/>
-</p>
-
-<p align="center">
   <a href="https://github.com/jinghai/opendrama/releases/latest">
     <img src="https://img.shields.io/github/release/jinghai/opendrama?style=flat-square" alt="版本"/>
   </a>
