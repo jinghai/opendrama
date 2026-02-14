@@ -7,6 +7,7 @@ import (
 	services2 "github.com/drama-generator/backend/application/services"
 	storage2 "github.com/drama-generator/backend/infrastructure/storage"
 	"github.com/drama-generator/backend/pkg/ai/newapi"
+	"github.com/drama-generator/backend/pkg/ai/tts"
 	"github.com/drama-generator/backend/pkg/config"
 	"github.com/drama-generator/backend/pkg/logger"
 	"github.com/gin-gonic/gin"
@@ -62,6 +63,13 @@ func SetupRouter(cfg *config.Config, db *gorm.DB, log *logger.Logger, localStora
 	newAPIClient := newapi.NewClient("https://api.newapi.com", "")
 	newAPIHandler := handlers2.NewNewAPIHandler(newAPIClient)
 
+	// TTS语音合成服务
+	ttsService := tts.NewTTSService()
+	// 注册TTS客户端 (需要配置API Key)
+	// ttsService.RegisterClient("azure", tts.NewAzureTTSClient("your-api-key", "eastus"))
+	// ttsService.RegisterClient("alibaba", tts.NewAlibabaTTSClient("your-api-key", "your-app-key"))
+	ttsHandler := handlers2.NewTTSHandler(ttsService, cfg.Storage.LocalPath)
+
 	api := r.Group("/api/v1")
 	{
 		api.Use(middlewares2.RateLimitMiddleware())
@@ -105,6 +113,15 @@ func SetupRouter(cfg *config.Config, db *gorm.DB, log *logger.Logger, localStora
 			newapiRoutes.POST("/image", newAPIHandler.GenerateImage)
 			newapiRoutes.GET("/stats", newAPIHandler.GetStats)
 			newapiRoutes.PUT("/config", newAPIHandler.UpdateConfig)
+		}
+
+		// TTS语音合成路由
+		ttsRoutes := api.Group("/tts")
+		{
+			ttsRoutes.POST("/generate", ttsHandler.Generate)
+			ttsRoutes.GET("/voices", ttsHandler.ListVoices)
+			ttsRoutes.GET("/providers", ttsHandler.ListProviders)
+			ttsRoutes.POST("/batch", ttsHandler.BatchGenerate)
 		}
 
 		// 角色库路由
