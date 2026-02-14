@@ -19,8 +19,8 @@ func NewNewAPIHandler(client *newapi.NewAPIClient) *NewAPIHandler {
 
 // GenerateTextRequest 文本生成请求
 type GenerateTextRequest struct {
-	Model       string `json:"model" binding:"required"`
-	Prompt      string `json:"prompt" binding:"required"`
+	Model        string `json:"model" binding:"required"`
+	Prompt       string `json:"prompt" binding:"required"`
 	SystemPrompt string `json:"system_prompt"`
 }
 
@@ -123,7 +123,7 @@ func (h *NewAPIHandler) UpdateConfig(c *gin.Context) {
 
 	h.client.BaseURL = config.BaseURL
 	h.client.APIKey = config.APIKey
-	h.client.SetProviders(config.Providers)
+	h.client.SetProviders(config.LoadBalancer.Providers)
 
 	c.JSON(http.StatusOK, gin.H{"message": "config updated"})
 }

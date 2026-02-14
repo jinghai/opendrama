@@ -42,17 +42,6 @@ newapi:
         weight: 8
         enabled: true
 
-      # Google Gemini
-      - name: "gemini"
-        base_url: "https://generativelanguage.googleapis.com"
-        api_key: "${GEMINI_API_KEY}"
-        models:
-          - "gemini-pro"
-          - "gemini-pro-vision"
-        priority: 7
-        weight: 7
-        enabled: true
-
       # 阿里云通义千问
       - name: "qwen"
         base_url: "https://dashscope.aliyuncs.com/api/v1"
@@ -76,42 +65,8 @@ newapi:
         weight: 10
         enabled: true
 
-      # Moonshot (月之暗面)
-      - name: "moonshot"
-        base_url: "https://api.moonshot.cn/v1"
-        api_key: "${MOONSHOT_API_KEY}"
-        models:
-          - "moonshot-v1-8k"
-          - "moonshot-v1-32k"
-          - "moonshot-v1-128k"
-        priority: 8
-        weight: 8
-        enabled: true
-
 # 负载均衡策略说明:
 # - round-robin: 轮询，每个请求依次分配到不同服务商
 # - weighted: 加权轮询，根据权重分配请求
 # - least-cost: 最低成本，优先选择价格最低的服务商
 # - least-latency: 最低延迟，优先选择响应最快的服务商
-
-# 使用示例:
-# 
-# 文本生成:
-# curl -X POST http://localhost:5678/api/v1/newapi/text \
-#   -H "Content-Type: application/json" \
-#   -d '{
-#     "model": "gpt-4",
-#     "prompt": "写一个关于AI的短剧剧本",
-#     "system_prompt": "你是一个专业编剧"
-#   }'
-#
-# 图像生成:
-# curl -X POST http://localhost:5678/api/v1/newapi/image \
-#   -H "Content-Type: application/json" \
-#   -d '{
-#     "model": "dall-e-3",
-#     "prompt": "一个 futuristic 城市天际线"
-#   }'
-#
-# 获取统计:
-# curl http://localhost:5678/api/v1/newapi/stats

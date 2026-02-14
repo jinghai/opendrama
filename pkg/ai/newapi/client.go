@@ -1,6 +1,7 @@
 package newapi
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -23,15 +24,21 @@ type NewAPIClient struct {
 
 // NewAPIConfig NewAPI配置
 type NewAPIConfig struct {
-	BaseURL      string `yaml:"base_url" json:"base_url"`
-	APIKey       string `yaml:"api_key" json:"api_key"`
-	LoadBalancer `yaml:"load_balancer" json:"load_balancer"`
+	BaseURL      string           `yaml:"base_url" json:"base_url"`
+	APIKey       string           `yaml:"api_key" json:"api_key"`
+	LoadBalancer LoadBalancerConfig `yaml:"load_balancer" json:"load_balancer"`
+}
+
+// LoadBalancerConfig 负载均衡器配置
+type LoadBalancerConfig struct {
+	Strategy   string            `yaml:"strategy" json:"strategy"` // "round-robin", "weighted", "least-cost"
+	Providers  []ProviderConfig  `yaml:"providers" json:"providers"`
 }
 
 // LoadBalancer 负载均衡器
 type LoadBalancer struct {
-	Strategy    string           `yaml:"strategy" json:"strategy"` // "round-robin", "weighted", "least-cost"
-	Providers  []ProviderConfig `yaml:"providers" json:"providers"`
+	Strategy    string           
+	Providers  []ProviderConfig 
 	stats      map[string]*ProviderStats
 	mu         sync.RWMutex
 }
@@ -51,7 +58,7 @@ type ProviderConfig struct {
 type ProviderStats struct {
 	Name          string        `json:"name"`
 	RequestCount int           `json:"request_count"`
-	ErrorCount   int          `json:"error_count"`
+	ErrorCount   int           `json:"error_count"`
 	SuccessRate  float64       `json:"success_rate"`
 	AvgLatency  time.Duration `json:"avg_latency"`
 	LastUsed    time.Time     `json:"last_used"`
@@ -321,7 +328,3 @@ func (lb *LoadBalancer) GetStats() map[string]*ProviderStats {
 	}
 	return result
 }
-
-import (
-	"bytes"
-)
