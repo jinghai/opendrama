@@ -66,6 +66,11 @@ const routes: RouteRecordRaw[] = [
     path: '/settings/ai-config',
     name: 'AIConfig',
     component: () => import('../views/settings/AIConfig.vue')
+  },
+  {
+    path: '/settings/tts',
+    name: 'TTSSettings',
+    component: () => import('../views/settings/TTSSettings.vue')
   }
 ]
 

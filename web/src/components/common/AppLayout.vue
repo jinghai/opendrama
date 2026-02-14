@@ -5,7 +5,7 @@
       <div class="header-content">
         <div class="header-left">
           <router-link to="/" class="logo">
-            <span class="logo-text">🎬 HuoBao Drama</span>
+            <span class="logo-text">🎬 OpenDrama</span>
           </router-link>
         </div>
         <div class="header-right">
@@ -14,6 +14,10 @@
           <el-button @click="showAIConfig = true" class="header-btn">
             <el-icon><Setting /></el-icon>
             <span class="btn-text">{{ $t('drama.aiConfig') }}</span>
+          </el-button>
+          <el-button @click="showTTSConfig = true" class="header-btn">
+            <el-icon><Microphone /></el-icon>
+            <span class="btn-text">TTS设置</span>
           </el-button>
           <!-- <el-button :icon="Setting" circle @click="showAIConfig = true" :title="$t('aiConfig.title')" /> -->
         </div>
@@ -27,17 +31,25 @@
 
     <!-- AI Config Dialog -->
     <AIConfigDialog v-model="showAIConfig" />
+
+    <!-- TTS Config Dialog -->
+    <el-dialog v-model="showTTSConfig" title="🎙️ TTS语音合成设置" width="800px">
+      <TTSSettings />
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Setting } from '@element-plus/icons-vue'
+import { Setting, Microphone } from '@element-plus/icons-vue'
 import ThemeToggle from './ThemeToggle.vue'
 import AIConfigDialog from './AIConfigDialog.vue'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
+import TTSSettings from '@/views/settings/TTSSettings.vue'
+import { ElMessageBox } from 'element-plus'
 
 const showAIConfig = ref(false)
+const showTTSConfig = ref(false)
 </script>
 
 <style scoped>
