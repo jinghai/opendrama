@@ -1,666 +1,291 @@
-# 🎬 Huobao Drama - AI Short Drama Production Platform
+# OpenDrama (开源短剧)
 
-<div align="center">
+<p align="center">
+  <img src="drama.png" alt="OpenDrama Logo" width="200"/>
+</p>
 
-**Full-stack AI Short Drama Automation Platform Based on Go + Vue3**
-
-[![Go Version](https://img.shields.io/badge/Go-1.23+-00ADD8?style=flat&logo=go)](https://golang.org)
-[![Vue Version](https://img.shields.io/badge/Vue-3.x-4FC08D?style=flat&logo=vue.js)](https://vuejs.org)
-[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
-[Features](#features) • [Quick Start](#quick-start) • [Deployment](#deployment)
-
-[简体中文](README-CN.md) | [English](README.md) | [日本語](README-JA.md)
-
-</div>
-
----
-
-## 📖 About
-
-Huobao Drama is an AI-powered short drama production platform that automates the entire workflow from script generation, character design, storyboarding to video composition.
-
-火宝短剧商业版地址：[火宝短剧商业版](https://drama.chatfire.site/shortvideo)
-
-火宝小说生成：[火宝小说生成](https://marketing.chatfire.site/huobao-novel/)
-
-### 🎯 Core Features
-
-- **🤖 AI-Driven**: Parse scripts using large language models to extract characters, scenes, and storyboards
-- **🎨 Intelligent Creation**: AI-generated character portraits and scene backgrounds
-- **📹 Video Generation**: Automatic storyboard video generation using text-to-video and image-to-video models
-- **🔄 Complete Workflow**: End-to-end production workflow from idea to final video。
-
-### 🛠️ Technical Architecture
-
-Based on **DDD (Domain-Driven Design)** with clear layering:
-
-```
-├── API Layer (Gin HTTP)
-├── Application Service Layer (Business Logic)
-├── Domain Layer (Domain Models)
-└── Infrastructure Layer (Database, External Services)
-```
-
-### 🎥 Demo Videos
-
-Experience AI short drama generation:
-
-<div align="center">
-
-**Sample Work 1**
-
-<video src="https://ffile.chatfire.site/cf/public/20260114094337396.mp4" controls width="640"></video>
-
-**Sample Work 2**
-
-<video src="https://ffile.chatfire.site/cf/public/fcede75e8aeafe22031dbf78f86285b8.mp4" controls width="640"></video>
-
-[Watch Video 1](https://ffile.chatfire.site/cf/public/20260114094337396.mp4) | [Watch Video 2](https://ffile.chatfire.site/cf/public/fcede75e8aeafe22031dbf78f86285b8.mp4)
-
-</div>
+<p align="center">
+  <a href="https://github.com/jinghai/opendrama/releases/latest">
+    <img src="https://img.shields.io/github/release/jinghai/opendrama?style=flat-square" alt="版本"/>
+  </a>
+  <a href="https://github.com/jinghai/opendrama/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/jinghai/opendrama?style=flat-square" alt="许可证"/>
+  </a>
+  <a href="https://gitter.im/opendrama/community">
+    <img src="https://img.shields.io/gitter/room/opendrama/community?style=flat-square" alt="Gitter"/>
+  </a>
+</p>
 
 ---
 
-## ✨ Features
+## 📖 项目简介
 
-### 🎭 Character Management
+**OpenDrama (开源短剧)** 是一款基于AI的短剧创作平台，致力于让每个人都能成为剧作家。
 
-- ✅ AI-generated character portraits
-- ✅ Batch character generation
-- ✅ Character image upload and management
+我们相信，AI技术应该 democratize（民主化）创意表达。通过 OpenDrama，创作者可以：
 
-### 🎬 Storyboard Production
-
-- ✅ Automatic storyboard script generation
-- ✅ Scene descriptions and shot design
-- ✅ Storyboard image generation (text-to-image)
-- ✅ Frame type selection (first frame/key frame/last frame/panel)
-
-### 🎥 Video Generation
-
-- ✅ Automatic image-to-video generation
-- ✅ Video composition and editing
-- ✅ Transition effects
-
-### 📦 Asset Management
-
-- ✅ Unified asset library management
-- ✅ Local storage support
-- ✅ Asset import/export
-- ✅ Task progress tracking
+- 🤖 使用AI生成剧本、分镜、角色
+- 🎬 自动生成视频和配音
+- 👥 轻松管理角色和场景库
+- 📝 一站式完成短剧创作全流程
 
 ---
 
-## 🚀 Quick Start
+## ✨ 核心特性
 
-### 📋 Prerequisites
+### 🎭 智能创作
+- **AI剧本生成** - 输入主题，AI自动生成完整剧本
+- **角色智能提取** - 从剧本自动识别并创建角色
+- **分镜自动生成** - AI分析剧本，生成详细分镜脚本
 
-| Software    | Version | Description                     |
-| ----------- | ------- | ------------------------------- |
-| **Go**      | 1.23+   | Backend runtime                 |
-| **Node.js** | 18+     | Frontend build environment      |
-| **npm**     | 9+      | Package manager                 |
-| **FFmpeg**  | 4.0+    | Video processing (**Required**) |
-| **SQLite**  | 3.x     | Database (built-in)             |
+### 🎬 视频生成
+- **图生视频** - 将静态图像转换为动态视频
+- **多模型支持** - 支持多种AI视频生成服务
+- **批量处理** - 高效处理大量素材
 
-#### Installing FFmpeg
+### 🎙️ 语音合成 (TTS)
+- **多语言支持** - 支持中文、英文等多种语言
+- **丰富音色** - 多种语音风格可选
+- **情感表达** - 支持语速、音调调节
 
-**macOS:**
+### 👥 资源管理
+- **角色库** - 统一管理所有角色形象
+- **道具库** - 丰富的道具资源管理
+- **场景库** - 场景背景素材管理
 
-```bash
-brew install ffmpeg
-```
+---
 
-**Ubuntu/Debian:**
+## 🚀 快速开始
 
-```bash
-sudo apt update
-sudo apt install ffmpeg
-```
+### 环境要求
 
-**Windows:**
-Download from [FFmpeg Official Site](https://ffmpeg.org/download.html) and configure environment variables
+- **Go** 1.20+
+- **Node.js** 18+
+- **PostgreSQL** 14+ 或 **SQLite**
+- **FFmpeg** (用于音视频处理)
 
-Verify installation:
-
-```bash
-ffmpeg -version
-```
-
-### ⚙️ Configuration
-
-Copy and edit the configuration file:
+### 安装部署
 
 ```bash
+# 1. 克隆项目
+git clone https://github.com/jinghai/opendrama.git
+cd opendrama
+
+# 2. 配置后端
 cp configs/config.example.yaml configs/config.yaml
-vim configs/config.yaml
-```
+# 编辑配置文件，填入API Key
 
-Configuration file format (`configs/config.yaml`):
-
-```yaml
-app:
-  name: "Huobao Drama API"
-  version: "1.0.0"
-  debug: true # Set to true for development, false for production
-
-server:
-  port: 5678
-  host: "0.0.0.0"
-  cors_origins:
-    - "http://localhost:3012"
-  read_timeout: 600
-  write_timeout: 600
-
-database:
-  type: "sqlite"
-  path: "./data/drama_generator.db"
-  max_idle: 10
-  max_open: 100
-
-storage:
-  type: "local"
-  local_path: "./data/storage"
-  base_url: "http://localhost:5678/static"
-
-ai:
-  default_text_provider: "openai"
-  default_image_provider: "openai"
-  default_video_provider: "doubao"
-```
-
-**Key Configuration Items:**
-
-- `app.debug`: Debug mode switch (recommended true for development)
-- `server.port`: Service port
-- `server.cors_origins`: Allowed CORS origins for frontend
-- `database.path`: SQLite database file path
-- `storage.local_path`: Local file storage path
-- `storage.base_url`: Static resource access URL
-- `ai.default_*_provider`: AI service provider configuration (API keys configured in Web UI)
-
-### 📥 Installation
-
-```bash
-# Clone the project
-git clone https://github.com/chatfire-AI/huobao-drama.git
-cd huobao-drama
-
-# Install Go dependencies
-go mod download
-
-# Install frontend dependencies
-cd web
-npm install
-cd ..
-```
-
-### 🎯 Starting the Project
-
-#### Method 1: Development Mode (Recommended)
-
-**Frontend and backend separation with hot reload**
-
-```bash
-# Terminal 1: Start backend service
+# 3. 启动后端
 go run main.go
 
-# Terminal 2: Start frontend dev server
+# 4. 启动前端
 cd web
+npm install
 npm run dev
 ```
 
-- Frontend: `http://localhost:3012`
-- Backend API: `http://localhost:5678/api/v1`
-- Frontend automatically proxies API requests to backend
+访问 http://localhost:3012 即可开始使用。
 
-#### Method 2: Single Service Mode
-
-**Backend serves both API and frontend static files**
+### Docker部署
 
 ```bash
-# 1. Build frontend
-cd web
-npm run build
-cd ..
-
-# 2. Start service
-go run main.go
-```
-
-Access: `http://localhost:5678`
-
-### 🗄️ Database Initialization
-
-Database tables are automatically created on first startup (using GORM AutoMigrate), no manual migration needed.
-
----
-
-## 📦 Deployment
-
-### ☁️ Cloud One-Click Deployment (Recommended 3080Ti)
-
-👉 [优云智算，一键部署](https://www.compshare.cn/images/CaWEHpAA8t1H?referral_code=8hUJOaWz3YzG64FI2OlCiB&ytag=GPU_YY_YX_GitHub_huobaoai)
-
-> ⚠️ **Note**: Please save your data to local storage promptly when using cloud deployment
-
----
-
-### 🐳 Docker Deployment (Recommended)
-
-#### Method 1: Docker Compose (Recommended)
-
-#### 🚀 China Network Acceleration (Optional)
-
-If you are in China, pulling Docker images and installing dependencies may be slow. You can speed up the build process by configuring mirror sources.
-
-**Step 1: Create environment variable file**
-
-```bash
-cp .env.example .env
-```
-
-**Step 2: Edit `.env` file and uncomment the mirror sources you need**
-
-```bash
-# Enable Docker Hub mirror (recommended)
-DOCKER_REGISTRY=docker.1ms.run/
-
-# Enable npm mirror
-NPM_REGISTRY=https://registry.npmmirror.com/
-
-# Enable Go proxy
-GO_PROXY=https://goproxy.cn,direct
-
-# Enable Alpine mirror
-ALPINE_MIRROR=mirrors.aliyun.com
-```
-
-**Step 3: Build with docker compose (required)**
-
-```bash
-docker compose build
-```
-
-> **Important Note**:
->
-> - ⚠️ You must use `docker compose build` to automatically load mirror source configurations from the `.env` file
-> - ❌ If using `docker build` command, you need to manually pass `--build-arg` parameters
-> - ✅ Always recommended to use `docker compose build` for building
-
-**Performance Comparison**:
-
-| Operation        | Without Mirrors | With Mirrors |
-| ---------------- | --------------- | ------------ |
-| Pull base images | 5-30 minutes    | 1-5 minutes  |
-| Install npm deps | May fail        | Fast success |
-| Download Go deps | 5-10 minutes    | 30s-1 minute |
-
-> **Note**: Users outside China should not configure mirror sources, use default settings.
-
-```bash
-# Start services
+# 使用Docker Compose一键部署
 docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop services
-docker-compose down
-```
-
-#### Method 2: Docker Command
-
-> **Note**: Linux users need to add `--add-host=host.docker.internal:host-gateway` to access host services
-
-```bash
-# Run from Docker Hub
-docker run -d \
-  --name huobao-drama \
-  -p 5678:5678 \
-  -v $(pwd)/data:/app/data \
-  --restart unless-stopped \
-  huobao/huobao-drama:latest
-
-# View logs
-docker logs -f huobao-drama
-```
-
-**Local Build** (optional):
-
-```bash
-docker build -t huobao-drama:latest .
-docker run -d --name huobao-drama -p 5678:5678 -v $(pwd)/data:/app/data huobao-drama:latest
-```
-
-**Docker Deployment Advantages:**
-
-- ✅ Ready to use with default configuration
-- ✅ Environment consistency, avoiding dependency issues
-- ✅ One-click start, no need to install Go, Node.js, FFmpeg
-- ✅ Easy to migrate and scale
-- ✅ Automatic health checks and restarts
-- ✅ Automatic file permission handling
-
-#### 🔗 Accessing Host Services (Ollama/Local Models)
-
-The container is configured to access host services using `http://host.docker.internal:PORT`.
-
-**Configuration Steps:**
-
-1. **Start service on host (listen on all interfaces)**
-
-   ```bash
-   export OLLAMA_HOST=0.0.0.0:11434 && ollama serve
-   ```
-
-2. **Frontend AI Service Configuration**
-   - Base URL: `http://host.docker.internal:11434/v1`
-   - Provider: `openai`
-   - Model: `qwen2.5:latest`
-
----
-
-### 🏭 Traditional Deployment
-
-#### 1. Build
-
-```bash
-# 1. Build frontend
-cd web
-npm run build
-cd ..
-
-# 2. Compile backend
-go build -o huobao-drama .
-```
-
-Generated files:
-
-- `huobao-drama` - Backend executable
-- `web/dist/` - Frontend static files (embedded in backend)
-
-#### 2. Prepare Deployment Files
-
-Files to upload to server:
-
-```
-huobao-drama            # Backend executable
-configs/config.yaml     # Configuration file
-data/                   # Data directory (optional, auto-created on first run)
-```
-
-#### 3. Server Configuration
-
-```bash
-# Upload files to server
-scp huobao-drama user@server:/opt/huobao-drama/
-scp configs/config.yaml user@server:/opt/huobao-drama/configs/
-
-# SSH to server
-ssh user@server
-
-# Modify configuration file
-cd /opt/huobao-drama
-vim configs/config.yaml
-# Set mode to production
-# Configure domain and storage path
-
-# Create data directory and set permissions (Important!)
-# Note: Replace YOUR_USER with actual user running the service (e.g., www-data, ubuntu, deploy)
-sudo mkdir -p /opt/huobao-drama/data/storage
-sudo chown -R YOUR_USER:YOUR_USER /opt/huobao-drama/data
-sudo chmod -R 755 /opt/huobao-drama/data
-
-# Grant execute permission
-chmod +x huobao-drama
-
-# Start service
-./huobao-drama
-```
-
-#### 4. Manage Service with systemd
-
-Create service file `/etc/systemd/system/huobao-drama.service`:
-
-```ini
-[Unit]
-Description=Huobao Drama Service
-After=network.target
-
-[Service]
-Type=simple
-User=YOUR_USER
-WorkingDirectory=/opt/huobao-drama
-ExecStart=/opt/huobao-drama/huobao-drama
-Restart=on-failure
-RestartSec=10
-
-# Environment variables (optional)
-# Environment="GIN_MODE=release"
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Start service:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable huobao-drama
-sudo systemctl start huobao-drama
-sudo systemctl status huobao-drama
-```
-
-**⚠️ Common Issue: SQLite Write Permission Error**
-
-If you encounter `attempt to write a readonly database` error:
-
-```bash
-# 1. Check current user running the service
-sudo systemctl status huobao-drama | grep "Main PID"
-ps aux | grep huobao-drama
-
-# 2. Fix permissions (replace YOUR_USER with actual username)
-sudo chown -R YOUR_USER:YOUR_USER /opt/huobao-drama/data
-sudo chmod -R 755 /opt/huobao-drama/data
-
-# 3. Verify permissions
-ls -la /opt/huobao-drama/data
-# Should show owner as the user running the service
-
-# 4. Restart service
-sudo systemctl restart huobao-drama
-```
-
-**Reason:**
-
-- SQLite requires write permission on both the database file **and** its directory
-- Needs to create temporary files in the directory (e.g., `-wal`, `-journal`)
-- **Key**: Ensure systemd `User` matches data directory owner
-
-**Common Usernames:**
-
-- Ubuntu/Debian: `www-data`, `ubuntu`
-- CentOS/RHEL: `nginx`, `apache`
-- Custom deployment: `deploy`, `app`, current logged-in user
-
-#### 5. Nginx Reverse Proxy
-
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    location / {
-        proxy_pass http://localhost:5678;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-
-    # Direct access to static files
-    location /static/ {
-        alias /opt/huobao-drama/data/storage/;
-    }
-}
 ```
 
 ---
 
-## 🎨 Tech Stack
+## 📁 项目结构
 
-### Backend
-
-- **Language**: Go 1.23+
-- **Web Framework**: Gin 1.9+
-- **ORM**: GORM
-- **Database**: SQLite
-- **Logging**: Zap
-- **Video Processing**: FFmpeg
-- **AI Services**: OpenAI, Gemini, Doubao, etc.
-
-### Frontend
-
-- **Framework**: Vue 3.4+
-- **Language**: TypeScript 5+
-- **Build Tool**: Vite 5
-- **UI Components**: Element Plus
-- **CSS Framework**: TailwindCSS
-- **State Management**: Pinia
-- **Router**: Vue Router 4
-
-### Development Tools
-
-- **Package Management**: Go Modules, npm
-- **Code Standards**: ESLint, Prettier
-- **Version Control**: Git
-
----
-
-## 📝 FAQ
-
-### Q: How can Docker containers access Ollama on the host?
-
-A: Use `http://host.docker.internal:11434/v1` as Base URL. Note two things:
-
-1. Host Ollama needs to listen on `0.0.0.0`: `export OLLAMA_HOST=0.0.0.0:11434 && ollama serve`
-2. Linux users using `docker run` need to add: `--add-host=host.docker.internal:host-gateway`
-
-See: [DOCKER_HOST_ACCESS.md](docs/DOCKER_HOST_ACCESS.md)
-
-### Q: FFmpeg not installed or not found?
-
-A: Ensure FFmpeg is installed and in the PATH environment variable. Verify with `ffmpeg -version`.
-
-### Q: Frontend cannot connect to backend API?
-
-A: Check if backend is running and port is correct. In development mode, frontend proxy config is in `web/vite.config.ts`.
-
-### Q: Database tables not created?
-
-A: GORM automatically creates tables on first startup, check logs to confirm migration success.
+```
+opendrama/
+├── api/                    # API路由和处理器
+│   ├── handlers/          # 请求处理器
+│   ├── routes/            # 路由配置
+│   └── middlewares/       # 中间件
+├── application/            # 应用层逻辑
+│   └── services/          # 业务服务
+├── domain/                # 领域模型
+│   └── models/            # 数据模型
+├── infrastructure/        # 基础设施
+│   ├── database/          # 数据库
+│   ├── storage/           # 存储
+│   └── external/          # 外部工具
+├── pkg/                   # 公共包
+│   ├── ai/               # AI客户端
+│   │   ├── newapi/       # NewAPI统一接口
+│   │   └── tts/          # TTS语音合成
+│   ├── config/           # 配置管理
+│   └── logger/           # 日志
+├── web/                   # Vue.js前端
+│   ├── src/
+│   │   ├── api/          # API调用
+│   │   ├── components/   # 组件
+│   │   ├── views/        # 页面视图
+│   │   └── stores/       # 状态管理
+│   └── package.json
+├── configs/               # 配置文件
+├── docs/                 # 文档
+└── main.go              # 后端入口
+```
 
 ---
 
-## 📋 Changelog
+## 🔧 配置说明
 
-### v1.0.5 (2026-02-06)
+### AI服务配置
 
-#### 🎨 Major Features
+在 `configs/config.yaml` 中配置AI服务：
 
-- **🎭 Global Style System**: Introduced comprehensive style selection support across the entire project. Users can now define custom visual styles at the drama level, which automatically applies to all AI-generated content including characters, scenes, and storyboards, ensuring consistent artistic direction throughout the production.
+```yaml
+ai:
+  # OpenAI配置
+  openai:
+    api_key: "your-openai-api-key"
+    base_url: "https://api.openai.com"
+  
+  # Google Gemini配置
+  gemini:
+    api_key: "your-gemini-api-key"
+  
+  # 火山引擎(豆包)配置
+  volcengine:
+    api_key: "your-ark-api-key"
+    space_id: "your-space-id"
 
-- **✂️ Nine-Grid Sequence Image Cropping**: Added cropping tool for action sequence images. Users can now extract individual frames from 3x3 grid layouts and designate them as first frames, last frames, or keyframes for video generation, providing greater flexibility in shot composition and continuity.
+# NewAPI统一接口配置
+newapi:
+  base_url: "https://api.newapi.com"
+  api_key: "your-newapi-key"
+  load_balancer:
+    strategy: "least-cost"
+    providers:
+      - name: "openai"
+        enabled: true
+      - name: "qwen"
+        enabled: true
 
-#### 🚀 Enhancements
-
-- **📐 Optimized Action Sequence Grid**: Enhanced the visual quality and layout of nine-grid action sequence images with improved spacing, alignment, and frame transitions.
-
-- **🔧 Manual Grid Assembly**: Introduced manual grid composition tools supporting 2x2 (four-grid), 2x3 (six-grid), and 3x3 (nine-grid) layouts, allowing users to create custom action sequences from individual frames.
-
-- **🗑️ Content Management**: Added delete functionality for both generated images and videos, enabling better asset organization and storage management.
-
-### v1.0.4 (2026-01-27)
-
-#### 🚀 Major Updates
-
-- Introduced local storage strategy for generated content caching, effectively mitigating external resource link expiration risks
-- Implemented Base64 encoding for embedded reference image transmission
-- Fixed issue where shot image prompt state was not reset when switching shots
-- Fixed issue where video duration displayed as 0 when adding library videos
-- Added scene migration to episodes
-
-#### Historical Data Migration
-
-- Added migration script for processing historical data. For detailed instructions, please refer to [MIGRATE_README.md](MIGRATE_README.md)
-
-### v1.0.3 (2026-01-16)
-
-#### 🚀 Major Updates
-
-- Pure Go SQLite driver (`modernc.org/sqlite`), supports `CGO_ENABLED=0` cross-platform compilation
-- Optimized concurrency performance (WAL mode), resolved "database is locked" errors
-- Docker cross-platform support for `host.docker.internal` to access host services
-- Streamlined documentation and deployment guides
-
-### v1.0.2 (2026-01-14)
-
-#### 🐛 Bug Fixes / 🔧 Improvements
-
-- Fixed video generation API response parsing issues
-- Added OpenAI Sora video endpoint configuration
-- Optimized error handling and logging
+# TTS服务配置
+tts:
+  azure:
+    api_key: "your-azure-tts-key"
+    region: "eastus"
+  alibaba:
+    api_key: "your-alibaba-key"
+    app_key: "your-app-key"
+```
 
 ---
 
-## 🤝 Contributing
+## 📡 API接口
 
-Issues and Pull Requests are welcome!
+### 短剧管理
 
-1. Fork this project
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+| 接口 | 方法 | 说明 |
+|------|------|------|
+| `/api/v1/dramas` | GET | 获取短剧列表 |
+| `/api/v1/dramas` | POST | 创建短剧 |
+| `/api/v1/dramas/:id` | GET | 获取短剧详情 |
+| `/api/v1/dramas/:id` | PUT | 更新短剧 |
+| `/api/v1/dramas/:id` | DELETE | 删除短剧 |
+
+### AI生成
+
+| 接口 | 方法 | 说明 |
+|------|------|------|
+| `/api/v1/generation/characters` | POST | 生成角色 |
+| `/api/v1/images` | POST | 生成图片 |
+| `/api/v1/videos` | POST | 生成视频 |
+
+### NewAPI统一接口
+
+| 接口 | 方法 | 说明 |
+|------|------|------|
+| `/api/v1/newapi/text` | POST | 文本生成 |
+| `/api/v1/newapi/image` | POST | 图像生成 |
+| `/api/v1/newapi/stats` | GET | 获取统计 |
+
+### TTS语音合成
+
+| 接口 | 方法 | 说明 |
+|------|------|------|
+| `/api/v1/tts/generate` | POST | 生成语音 |
+| `/api/v1/tts/voices` | GET | 获取语音列表 |
+| `/api/v1/tts/providers` | GET | 获取提供商列表 |
+| `/api/v1/tts/batch` | POST | 批量生成 |
 
 ---
 
-## API Configuration Site
+## 🛠️ 开发计划
 
-Configure in 2 minutes: [API Aggregation Site](https://api.chatfire.site/models)
+### 阶段一：架构升级 (进行中)
+- [x] NewAPI统一接口开发
+- [x] 负载均衡器实现
+- [ ] 多服务商集成测试
+
+### 阶段二：TTS语音合成 (进行中)
+- [x] TTS客户端开发
+- [x] Azure TTS集成
+- [x] 阿里云TTS集成
+- [ ] 前端界面完善
+- [ ] API Key配置
+
+### 阶段三：前端优化
+- [ ] 剧本编辑器改进
+- [ ] 可视化分镜管理
+- [ ] 拖拽排序功能
+- [ ] 批量操作支持
+
+### 阶段四：功能完善
+- [ ] 用户管理系统
+- [ ] 权限控制
+- [ ] 项目分享功能
+- [ ] 模板系统
 
 ---
 
-## 👨‍💻 About Us
+## 🤝 贡献指南
 
-**AI Huobao - AI Studio Startup**
+欢迎贡献代码！请阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 了解如何参与贡献。
 
-- 🏠 **Location**: Nanjing, China
-- 🚀 **Status**: Startup in Progress
-- 📧 **Email**: [18550175439@163.com](mailto:18550175439@163.com)
-- 🐙 **GitHub**: [https://github.com/chatfire-AI/huobao-drama](https://github.com/chatfire-AI/huobao-drama)
+### 提交问题
 
-> _"Let AI help us do more creative things"_
+如果您发现bug或有功能建议，请提交 Issue。
 
-## Community Group
+### 提交代码
 
-![Community Group](drama.png)
-
-- Submit [Issue](../../issues)
-- Email project maintainers
+1. Fork 本仓库
+2. 创建分支 (`git checkout -b feature/xxx`)
+3. 提交更改 (`git commit -m 'Add xxx'`)
+4. 推送分支 (`git push origin feature/xxx`)
+5. 创建 Pull Request
 
 ---
 
-<div align="center">
+## 📄 许可证
 
-**⭐ If this project helps you, please give it a Star!**
+本项目采用 **MIT** 许可证 - 详见 [LICENSE](LICENSE) 文件。
 
-## Star History
+---
 
-[![Star History Chart](https://api.star-history.com/svg?repos=chatfire-AI/huobao-drama&type=date&legend=top-left)](https://www.star-history.com/#chatfire-AI/huobao-drama&type=date&legend=top-left)
+## 🙏 致谢
 
-Made with ❤️ by Huobao Team
+- [Vue.js](https://vuejs.org/) - 前端框架
+- [Gin](https://gin-gonic.com/) - Go Web框架
+- [Element Plus](https://element-plus.org/) - UI组件库
+- [OpenAI](https://openai.com/) - AI服务
+- [火山引擎](https://www.volcengine.com/) - 国产AI服务
 
-</div>
+---
+
+## 📱 联系方式
+
+- **GitHub**: https://github.com/jinghai/opendrama
+- **问题反馈**: https://github.com/jinghai/opendrama/issues
+- **邮箱**: contact@opendrama.ai
+
+---
+
+<p align="center">
+  <strong>OpenDrama (开源短剧)</strong> - 让每个人都能成为剧作家 🎭🎬
+</p>
