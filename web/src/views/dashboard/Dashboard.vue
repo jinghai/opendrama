@@ -10,8 +10,8 @@
       
       <el-main>
         <div class="welcome-section">
-          <h1>{{ $t('dashboard.welcome') }}</h1>
-          <p>{{ $t('dashboard.subtitle') }}</p>
+          <h1>🎬 OpenDrama</h1>
+          <p>开源短剧 · AI创作 · 人人皆是剧作家</p>
         </div>
         
         <el-row :gutter="20" class="stats-row">
