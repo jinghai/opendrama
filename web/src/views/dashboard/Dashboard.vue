@@ -14,20 +14,8 @@
           <p>开源短剧 · AI创作 · 人人皆是剧作家</p>
         </div>
         
-        <el-row :gutter="20" class="stats-row">
-          <el-col :span="6">
-            <el-card shadow="hover">
-              <div class="stat-item">
-                <el-icon :size="40" color="#409eff"><Document /></el-icon>
-                <h3>0</h3>
-                <p>{{ $t('dashboard.stats.projects') }}</p>
-              </div>
-            </el-card>
-          </el-col>
-          
-          <el-col :span="6">
-            <el-card shadow="hover">
-              <div class="stat-item">
+        <!-- 快速统计组件 -->
+        <QuickStats />
                 <el-icon :size="40" color="#67c23a"><Picture /></el-icon>
                 <h3>0</h3>
                 <p>{{ $t('dashboard.stats.images') }}</p>
@@ -86,6 +74,7 @@
 import { useRouter } from 'vue-router'
 import { Document, Picture, VideoPlay, Clock, Plus, FolderOpened, Setting } from '@element-plus/icons-vue'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
+import QuickStats from './components/QuickStats.vue'
 
 const router = useRouter()
 
