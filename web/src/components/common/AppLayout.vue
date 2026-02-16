@@ -19,6 +19,10 @@
             <el-icon><Microphone /></el-icon>
             <span class="btn-text">TTS设置</span>
           </el-button>
+          <el-button @click="goToNewAPI" class="header-btn">
+            <el-icon><Connection /></el-icon>
+            <span class="btn-text">NewAPI</span>
+          </el-button>
           <!-- <el-button :icon="Setting" circle @click="showAIConfig = true" :title="$t('aiConfig.title')" /> -->
         </div>
       </div>
@@ -41,15 +45,21 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Setting, Microphone } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
+import { Setting, Microphone, Connection } from '@element-plus/icons-vue'
 import ThemeToggle from './ThemeToggle.vue'
 import AIConfigDialog from './AIConfigDialog.vue'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 import TTSSettings from '@/views/settings/TTSSettings.vue'
 import { ElMessageBox } from 'element-plus'
 
+const router = useRouter()
 const showAIConfig = ref(false)
 const showTTSConfig = ref(false)
+
+const goToNewAPI = () => {
+  router.push('/settings/newapi')
+}
 </script>
 
 <style scoped>

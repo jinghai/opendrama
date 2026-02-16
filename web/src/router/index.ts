@@ -71,6 +71,11 @@ const routes: RouteRecordRaw[] = [
     path: '/settings/tts',
     name: 'TTSSettings',
     component: () => import('../views/settings/TTSSettings.vue')
+  },
+  {
+    path: '/settings/newapi',
+    name: 'NewAPISettings',
+    component: () => import('../views/settings/NewAPISettings.vue')
   }
 ]
 
