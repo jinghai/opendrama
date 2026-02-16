@@ -51,11 +51,14 @@
 ## 阶段三：前端优化 🔄 进行中
 
 - [x] TTS设置入口
+- [x] NewAPI设置页面
 - [x] 品牌统一为OpenDrama
 - [x] 首页仪表盘优化
 - [x] 添加QuickStats实时统计组件
-- [x] Docker配置更新为OpenDrama
-- [x] 配置文件更新
+- [x] 添加QuickActions快捷操作
+- [x] 快捷操作组件
+- [x] NewAPI API封装
+- [x] 短剧卡片组件
 - [ ] 剧本编辑器改进
 - [ ] 可视化分镜管理
 - [ ] 拖拽排序功能
