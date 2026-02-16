@@ -44,9 +44,8 @@
           </el-col>
         </el-row>
         
-        <div class="quick-actions">
-          <h2>{{ $t('dashboard.quickStart') }}</h2>
-          <el-row :gutter="20">
+        <!-- 快捷操作组件 -->
+        <QuickActions @open-tts="openTTSDialog" />
             <el-col :span="8">
               <el-card shadow="hover" class="action-card" @click="goToDramas">
                 <el-icon :size="50" color="#409eff"><Plus /></el-icon>
@@ -75,6 +74,7 @@ import { useRouter } from 'vue-router'
 import { Document, Picture, VideoPlay, Clock, Plus, FolderOpened, Setting } from '@element-plus/icons-vue'
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 import QuickStats from './components/QuickStats.vue'
+import QuickActions from './components/QuickActions.vue'
 
 const router = useRouter()
 
@@ -84,6 +84,18 @@ const goToDramas = () => {
 
 const goToSettings = () => {
   router.push('/settings/ai-config')
+}
+
+const openTTSDialog = () => {
+  // Emit event to parent to open TTS dialog
+  const layout = document.querySelector('.app-layout')
+  if (layout) {
+    // Try to find and click the TTS button
+    const ttsBtn = layout.querySelector('button:has(.el-icon-microphone)')
+    if (ttsBtn) {
+      (ttsBtn as HTMLElement).click()
+    }
+  }
 }
 </script>
 
