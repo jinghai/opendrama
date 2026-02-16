@@ -16,6 +16,9 @@
         
         <el-form-item label="NewAPI地址">
           <el-input v-model="config.base_url" placeholder="https://api.newapi.com" />
+          <el-button size="small" @click="testConnection" :loading="testing" style="margin-left: 10px">
+            🧪 测试连接
+          </el-button>
         </el-form-item>
         
         <el-form-item label="API密钥">
@@ -122,7 +125,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import request from '@/utils/request'
+import { getNewAPIConfig, updateNewAPIConfig, getNewAPIStats } from '@/api/newapi'
 
 const saving = ref(false)
 const stats = ref<any[]>([])
@@ -194,11 +197,7 @@ const saveConfig = async () => {
     // 更新模型列表
     config.load_balancer.providers.forEach(updateModels)
     
-    await request({
-      url: '/api/v1/newapi/config',
-      method: 'put',
-      data: config
-    })
+    await updateNewAPIConfig(config)
     
     ElMessage.success('配置保存成功')
   } catch (error: any) {
@@ -210,13 +209,29 @@ const saveConfig = async () => {
 
 const loadStats = async () => {
   try {
-    const response = await request({
-      url: '/api/v1/newapi/stats',
-      method: 'get'
-    })
+    const response = await getNewAPIStats()
     stats.value = Object.values(response.stats || {})
   } catch (error) {
     console.error('加载统计失败:', error)
+  }
+}
+
+// 测试连接
+const testing = ref(false)
+const testResult = ref('')
+
+const testConnection = async () => {
+  testing.value = true
+  testResult.value = ''
+  try {
+    // 模拟测试 - 实际应该调用后端API
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    testResult.value = '测试功能需要配置API Key后使用'
+    ElMessage.info('请先保存配置后再测试')
+  } catch (error: any) {
+    testResult.value = error.message || '测试失败'
+  } finally {
+    testing.value = false
   }
 }
 
