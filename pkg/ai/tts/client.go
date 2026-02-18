@@ -328,7 +328,8 @@ func (s *TTSService) RegisterClient(provider string, client TTSClient) {
 func (s *TTSService) Generate(ctx context.Context, provider, voice, text string, speed, pitch float64, outputPath string) (*TTSResponse, error) {
 	client, ok := s.Clients[provider]
 	if !ok {
-		return &TTSResponse{Success: false, Error: fmt.Errorf("provider %s not found", provider), Provider: provider}, fmt.Errorf("provider %s not found", provider)
+		errMsg := fmt.Sprintf("provider %s not found", provider)
+		return &TTSResponse{Success: false, Error: errMsg, Provider: provider}, fmt.Errorf(errMsg)
 	}
 
 	req := &TTSRequest{
