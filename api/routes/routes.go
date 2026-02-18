@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/drama-generator/backend/api/handlers"
 	handlers2 "github.com/drama-generator/backend/api/handlers"
 	middlewares2 "github.com/drama-generator/backend/api/middlewares"
 	services2 "github.com/drama-generator/backend/application/services"
