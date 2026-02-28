@@ -267,14 +267,10 @@ tts:
 本项目采用 **MIT** 许可证 - 详见 [LICENSE](LICENSE) 文件。
 
 ---
+## 🎁 福利推荐
 
-## 🙏 致谢
-
-- [Vue.js](https://vuejs.org/) - 前端框架
-- [Gin](https://gin-gonic.com/) - Go Web框架
-- [Element Plus](https://element-plus.org/) - UI组件库
-- [OpenAI](https://openai.com/) - AI服务
-- [火山引擎](https://www.volcengine.com/) - 国产AI服务
+使用高性能大模型 API (DeepSeek, Qwen, Yi 等)，注册即送免费额度：
+👉 [点击领取硅基流动 (SiliconFlow) 免费额度](https://cloud.siliconflow.cn/i/ouQu1EpG)
 
 ---
 
