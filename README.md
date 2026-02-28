@@ -131,6 +131,10 @@ opendrama/
 
 ### AI服务配置
 
+> 💡 **推荐服务商**：本项目推荐使用 **硅基流动 (SiliconFlow)** 提供的 API 服务。它兼容 OpenAI 格式，支持 DeepSeek、Qwen、Yi 等多种高性能模型，速度快且价格亲民。
+> 
+> [**点击此处注册**](https://cloud.siliconflow.cn/i/ouQu1EpG) 即可获得免费额度，助你轻松启动项目！
+
 在 `configs/config.yaml` 中配置AI服务：
 
 ```yaml
